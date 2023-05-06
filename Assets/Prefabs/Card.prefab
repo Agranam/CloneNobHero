@@ -417,7 +417,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd45436a3832434a831ed64ca48933fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _iconBackground: {fileID: 8095936323306529457}
+  _iconBackground: {fileID: 8095936323454928740}
   _iconImage: {fileID: 8095936324686492702}
   _nameText: {fileID: 8095936323507262768}
   _descriptionText: {fileID: 8095936324804390808}

@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Security.Cryptography.X509Certificates;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class EffectManager : MonoBehaviour
+public class EffectsManager : MonoBehaviour
 {
     [SerializeField] private List<ActiveEffect> _activeEffectsApplied = new();
     [SerializeField] private List<PassiveEffect> _passiveEffectsApplied = new();
@@ -28,9 +26,30 @@ public class EffectManager : MonoBehaviour
 
     private void Start()
     {
-        ShowCards();
+        //ShowCards();
     }
 
+    public void AddEffect(Effect effect)
+    {
+        if (effect is ActiveEffect activeEffect)
+        {
+            if (!_activeEffectsApplied.Contains(activeEffect))
+            {
+                _activeEffectsApplied.Add(activeEffect);
+                _activeEffects.Remove(activeEffect);
+            }
+        } 
+        else if (effect is PassiveEffect passiveEffect)
+        {
+            if (!_passiveEffectsApplied.Contains(passiveEffect))
+            {
+                _passiveEffectsApplied.Add(passiveEffect);
+                _passiveEffects.Remove(passiveEffect);
+            }
+        }   
+        effect.Activate();
+    }
+    
     [ContextMenu("ShowCards")]
     public void ShowCards()
     {
