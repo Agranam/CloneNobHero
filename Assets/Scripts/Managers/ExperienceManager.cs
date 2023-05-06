@@ -1,11 +1,14 @@
 ﻿using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Rendering;
 using UnityEngine.UI;
 
 public class ExperienceManager : MonoBehaviour
 {
+    public static UnityEvent LevelUp = new ();
+
     [SerializeField] private TextMeshProUGUI _levelText;
     [SerializeField] private Image _experienceBar;
     [SerializeField] private EffectsManager _effectsManager;
@@ -43,6 +46,7 @@ public class ExperienceManager : MonoBehaviour
         _effectsManager.ShowCards();
         GetNextLevelExperience();
         DisplayExperience();
+        LevelUp.Invoke();
     }
 
     private void DisplayExperience()

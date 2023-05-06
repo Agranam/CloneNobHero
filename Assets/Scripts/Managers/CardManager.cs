@@ -16,13 +16,18 @@ public class CardManager : MonoBehaviour
         }
     }
 
-    public void ShowCards(List<Effect> effects)
+    public void UpdateCards(List<Effect> effects, float delay)
     {
-        _cardManagerParent.SetActive(true);
         for (int i = 0; i < effects.Count; i++)
         {
             _effectCards[i].Show(effects[i]);
         }
+        Invoke(nameof(ShowCards), delay);
+    }
+
+    private void ShowCards()
+    {
+        _cardManagerParent.SetActive(true);
     }
 
     public void HideCards()

@@ -9,7 +9,7 @@ public class ExperienceLoot : Loot
         _experienceValue = value;
     }
     
-    public override void Take(Collector collector)
+    protected override void Take(Collector collector)
     {
         collector.TakeExperience(_experienceValue);
         base.Take(collector);

@@ -4,6 +4,7 @@ using Random = UnityEngine.Random;
 
 public class EffectsManager : MonoBehaviour
 {
+    [SerializeField] private float _delayShowCards = 2f;
     [SerializeField] private List<ActiveEffect> _activeEffectsApplied = new();
     [SerializeField] private List<PassiveEffect> _passiveEffectsApplied = new();
     
@@ -82,7 +83,7 @@ public class EffectsManager : MonoBehaviour
             effectForCards.Add(effectsToShow[index]);
         }
         
-        _cardManager.ShowCards(effectForCards);
+        _cardManager.UpdateCards(effectForCards, _delayShowCards);
     }
 
     private int[] RandomSort(int lenght, int number)

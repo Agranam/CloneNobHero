@@ -1,10 +1,22 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 
 public class Loot : MonoBehaviour
 {
+    [SerializeField] private int _speedRotation = 200;
     [SerializeField] private Collider _collider;
 
+    private void Update()
+    {
+        Rotation();
+    }
+
+    private void Rotation()
+    {
+        transform.Rotate(Vector3.up * _speedRotation * Time.deltaTime);
+    }
+    
     public void Collect(Collector collector)
     {
         _collider.enabled = false;
@@ -30,7 +42,7 @@ public class Loot : MonoBehaviour
         Take(collector);
     }
 
-    public virtual void Take(Collector collector)
+    protected virtual void Take(Collector collector)
     {
         Destroy(gameObject);
     }

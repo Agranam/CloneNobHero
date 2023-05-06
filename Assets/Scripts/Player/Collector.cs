@@ -1,4 +1,5 @@
 ﻿using System;
+using UnityEditor;
 using UnityEngine;
 
 public class Collector : MonoBehaviour
@@ -6,7 +7,18 @@ public class Collector : MonoBehaviour
     [SerializeField] private float _distanceToCollect;
     [SerializeField] private LayerMask _layerMask;
     [SerializeField] private ExperienceManager _experienceManager;
-    
+    [SerializeField] private ParticleSystem _levelUpParticles;
+
+    private void OnEnable()
+    {
+        ExperienceManager.LevelUp.AddListener(PlayLevelUpEffect);
+    }
+
+    private void OnDisable()
+    {
+        ExperienceManager.LevelUp.RemoveListener(PlayLevelUpEffect);
+    }
+
     private void FixedUpdate()
     {
         PickUpLoot();
@@ -30,5 +42,16 @@ public class Collector : MonoBehaviour
     public void TakeExperience(int value)
     {
         _experienceManager.AddExperience(value);
+    }
+
+    private void PlayLevelUpEffect()
+    {
+        _levelUpParticles.Play();
+    }
+    
+    private void OnDrawGizmos()
+    {
+        Handles.color = Color.yellow;
+        Handles.DrawWireDisc(transform.position, Vector3.up, _distanceToCollect);
     }
 }
