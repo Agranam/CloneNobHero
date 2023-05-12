@@ -9,9 +9,9 @@ public class ExperienceLoot : Loot
         _experienceValue = value;
     }
     
-    protected override void Take(Collector collector)
+    protected override void Take(PlayerCollector playerCollector)
     {
-        collector.TakeExperience(_experienceValue);
-        base.Take(collector);
+        playerCollector.TakeExperience(_experienceValue);
+        base.Take(playerCollector);
     }
 }

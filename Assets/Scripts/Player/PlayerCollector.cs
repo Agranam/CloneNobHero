@@ -2,7 +2,7 @@
 using UnityEditor;
 using UnityEngine;
 
-public class Collector : MonoBehaviour
+public class PlayerCollector : MonoBehaviour
 {
     [SerializeField] private float _distanceToCollect;
     [SerializeField] private LayerMask _layerMask;

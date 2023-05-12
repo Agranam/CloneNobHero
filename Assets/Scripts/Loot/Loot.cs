@@ -17,13 +17,13 @@ public class Loot : MonoBehaviour
         transform.Rotate(Vector3.up * _speedRotation * Time.deltaTime);
     }
     
-    public void Collect(Collector collector)
+    public void Collect(PlayerCollector playerCollector)
     {
         _collider.enabled = false;
-        StartCoroutine(MoveToCollector(collector));
+        StartCoroutine(MoveToCollector(playerCollector));
     }
 
-    IEnumerator MoveToCollector(Collector collector)
+    IEnumerator MoveToCollector(PlayerCollector playerCollector)
     {
         Vector3 a = transform.position;
         Vector3 b = a + Vector3.up * 2.5f;
@@ -31,7 +31,7 @@ public class Loot : MonoBehaviour
         
         for (float t = 0; t < 1f; t+=Time.deltaTime * 3)
         {
-            Vector3 d = collector.transform.position;
+            Vector3 d = playerCollector.transform.position;
             Vector3 c = d + Vector3.up * 2.5f;
             Vector3 position = Bezier.GetPoint(a, b, c, d, t);
             
@@ -39,10 +39,10 @@ public class Loot : MonoBehaviour
             yield return null;
         }
         
-        Take(collector);
+        Take(playerCollector);
     }
 
-    protected virtual void Take(Collector collector)
+    protected virtual void Take(PlayerCollector playerCollector)
     {
         Destroy(gameObject);
     }
