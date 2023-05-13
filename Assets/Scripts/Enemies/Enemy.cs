@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] private Transform _playerTransform;
     [SerializeField] private Rigidbody _rigidbody;
     [SerializeField] private float _speed;
     [SerializeField] private float _rotationLerpRate = 3f;
@@ -11,7 +10,9 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float _dps = 10f;
 
     private PlayerHealth _playerHealth;
+    private Transform _playerTransform;
     private float _attackTimer;
+    private float _spawnRadius;
 
     private void Update()
     {
@@ -36,7 +37,18 @@ public class Enemy : MonoBehaviour
             transform.rotation = Quaternion.Lerp(transform.rotation, toPlayerRotation, Time.deltaTime * _rotationLerpRate);
 
             _rigidbody.velocity = transform.forward * _speed;
+
+            if (toPlayer.magnitude > _spawnRadius * 2)
+            {
+                transform.position += toPlayer * 1.95f;
+            }
         }
+    }
+
+    public void Init(Transform playerTransform, float spawnRadius)
+    {
+        _playerTransform = playerTransform;
+        _spawnRadius = spawnRadius;
     }
 
     private void OnTriggerEnter(Collider other)
