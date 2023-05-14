@@ -13,11 +13,6 @@ public class EnemyManager : MonoBehaviour
 
     private List<Enemy> _enemiesList = new();
 
-    private void Start()
-    {
-        StartNewWave(6);
-    }
-
     public void StartNewWave(int wave)
     {
         StopAllCoroutines();
@@ -37,7 +32,7 @@ public class EnemyManager : MonoBehaviour
         }
     }
     
-    public void Create(Enemy enemy)
+    private void Create(Enemy enemy)
     {
         Vector2 randomPoint = Random.insideUnitCircle.normalized;
         Vector3 position = new Vector3(randomPoint.x, 0, randomPoint.y) * _spawnRadius + _playerTransform.position;

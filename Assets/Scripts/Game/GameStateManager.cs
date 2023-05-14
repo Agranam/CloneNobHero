@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class GameStateManager : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class GameStateManager : MonoBehaviour
     [SerializeField] private GameState _pauseState;
     [SerializeField] private GameState _winState;
     [SerializeField] private GameState _loseState;
+    [SerializeField] private GameState _cardState;
 
     public void Init()
     {
@@ -17,18 +19,30 @@ public class GameStateManager : MonoBehaviour
         _pauseState?.Init(this);
         _winState?.Init(this);
         _loseState?.Init(this);
+        _cardState?.Init(this);
 
         SetGameState(_menuState);
     }
 
+    private void OnEnable()
+    {
+        PlayerHealth.OnDie += SetLose;
+    }
+    
+    private void OnDisable()
+    {
+        PlayerHealth.OnDie -= SetLose;
+    }
+    
     private void SetGameState(GameState gameState)
     {
         if(_currentGameState)
         {
             _currentGameState.Exit();
         }
-        gameState.Enter();
         _currentGameState = gameState;
+
+        gameState.Enter();
     }
 
     public void SetMenu()
@@ -50,5 +64,9 @@ public class GameStateManager : MonoBehaviour
     public void SetLose()
     {
         SetGameState(_loseState);
+    }
+    public void SetCardState()
+    {
+        SetGameState(_cardState);
     }
 }

@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-public class RidgidbodyMove : MonoBehaviour
+public class RigidbodyMove : MonoBehaviour
 {
     [SerializeField] private Rigidbody _rigidbody;
     [SerializeField] private Joystick _joystick;

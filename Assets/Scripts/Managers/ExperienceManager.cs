@@ -16,7 +16,8 @@ public class ExperienceManager : MonoBehaviour
 
     [SerializeField] private float _experience;
     [SerializeField] private float _nextLevelExperience;
-    private int _level;
+    
+    private int _level = -1;
 
     private void Awake()
     {

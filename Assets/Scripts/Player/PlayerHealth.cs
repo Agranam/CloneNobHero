@@ -4,7 +4,7 @@ using UnityEngine;
 public class PlayerHealth : MonoBehaviour
 {
     public event Action<float, float> OnHealthChange;
-    public event Action OnDie;
+    public static event Action OnDie;
     
     [SerializeField] private float _maxHealth;
 
@@ -34,7 +34,6 @@ public class PlayerHealth : MonoBehaviour
 
     private void Die()
     {
-        Debug.Log("Died");
         OnDie?.Invoke();
     }
 }
