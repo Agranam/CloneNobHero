@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -12,22 +13,29 @@ public class EffectsManager : MonoBehaviour
     [SerializeField] private List<PassiveEffect> _passiveEffects = new();
 
     [SerializeField] private CardManager _cardManager;
+    [SerializeField] private EnemyManager _enemyManager;
+    [SerializeField] private Player _player;
     
     private void Awake()
     {
         for (int i = 0; i < _activeEffects.Count; i++)
         {
             _activeEffects[i] = Instantiate(_activeEffects[i]);
+            _activeEffects[i].Initialize(this, _enemyManager, _player);
         }
         for (int i = 0; i < _passiveEffects.Count; i++)
         {
             _passiveEffects[i] = Instantiate(_passiveEffects[i]);
+            _passiveEffects[i].Initialize(this, _enemyManager, _player);
         }
     }
 
-    private void Start()
+    private void Update()
     {
-        //ShowCards();
+        foreach (var activeEffect in _activeEffectsApplied)
+        {
+            activeEffect.ProcessFrame(Time.deltaTime);
+        }
     }
 
     public void AddEffect(Effect effect)

@@ -26,12 +26,12 @@ public class GameStateManager : MonoBehaviour
 
     private void OnEnable()
     {
-        PlayerHealth.OnDie += SetLose;
+        Player.OnDie += SetLose;
     }
     
     private void OnDisable()
     {
-        PlayerHealth.OnDie -= SetLose;
+        Player.OnDie -= SetLose;
     }
     
     private void SetGameState(GameState gameState)

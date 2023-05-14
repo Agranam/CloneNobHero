@@ -5,19 +5,19 @@ using UnityEngine.UI;
 public class PlayerHealthBar : MonoBehaviour
 {
     [SerializeField] private Image _healthBar;
-    [SerializeField] private PlayerHealth _playerHealth;
+    [SerializeField] private Player _player;
 
     private void Awake()
     {
-        _playerHealth.OnHealthChange += SetValueHealthBar;
+        _player.OnHealthChange += SetValueBar;
     }
 
     private void OnDisable()
     {
-        _playerHealth.OnHealthChange -= SetValueHealthBar;
+        _player.OnHealthChange -= SetValueBar;
     }
 
-    private void SetValueHealthBar(float current, float max)
+    private void SetValueBar(float current, float max)
     {
         _healthBar.fillAmount = current / max;
     }

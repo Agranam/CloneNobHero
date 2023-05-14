@@ -77,8 +77,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35a3b8c0500f49aa8c9584e71d93d9d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerTransform: {fileID: 0}
   _rigidbody: {fileID: 2314663599661497628}
+  _dyingEffect: {fileID: 8891085540853434729, guid: a76161fe5e4d2c447965f3a0c359e851,
+    type: 3}
+  _health: 50
   _speed: 3
   _rotationLerpRate: 3
   _attackPeriod: 1

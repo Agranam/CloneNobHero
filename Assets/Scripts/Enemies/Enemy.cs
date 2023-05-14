@@ -4,24 +4,27 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [SerializeField] private Rigidbody _rigidbody;
+    [SerializeField] private GameObject _dyingEffect;
+    [SerializeField] private float _health = 50;
     [SerializeField] private float _speed;
     [SerializeField] private float _rotationLerpRate = 3f;
     [SerializeField] private float _attackPeriod = 1f;
     [SerializeField] private float _dps = 10f;
 
-    private PlayerHealth _playerHealth;
+    private EnemyManager _enemyManager;
+    private Player _player;
     private Transform _playerTransform;
     private float _attackTimer;
     private float _spawnRadius;
 
     private void Update()
     {
-        if (_playerHealth != null)
+        if (_player != null)
         {
             _attackTimer += Time.deltaTime;
             if (_attackTimer >= _attackPeriod)
             {
-                _playerHealth.TakeDamage(_dps * _attackPeriod);
+                _player.TakeDamage(_dps * _attackPeriod);
                 _attackTimer = 0;
             }
         }
@@ -45,25 +48,42 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    public void Init(Transform playerTransform, float spawnRadius)
+    public void Init(EnemyManager enemyManager, Transform playerTransform, float spawnRadius)
     {
+        _enemyManager = enemyManager;
         _playerTransform = playerTransform;
         _spawnRadius = spawnRadius;
     }
 
+    public void DoDamage(float damage)
+    {
+        _health -= damage;
+        if (_health <= 0)
+        {
+            Die();
+        }
+    }
+    
     private void OnTriggerEnter(Collider other)
     {
-        if (other.TryGetComponent(out PlayerHealth playerHealth))
+        if (other.TryGetComponent(out Player playerHealth))
         {
-            _playerHealth = playerHealth;
+            _player = playerHealth;
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.GetComponent<PlayerHealth>())
+        if (other.GetComponent<Player>())
         {
-            _playerHealth = null;
+            _player = null;
         }
+    }
+
+    private void Die()
+    {
+        _enemyManager.RemoveEnemy(this);
+        Instantiate(_dyingEffect, transform.position, Quaternion.identity);
+        Destroy(gameObject);
     }
 }

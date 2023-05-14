@@ -1435,7 +1435,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 403845999}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 315.25, y: 177.5, z: -0.7881248}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1541,7 +1541,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!114 &410087042
 MonoBehaviour:
@@ -5775,7 +5775,7 @@ PrefabInstance:
     - target: {fileID: 8196812612993696243, guid: d623ab8b6f8dab34c940d296f921fd2c,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8196812612993696243, guid: d623ab8b6f8dab34c940d296f921fd2c,
         type: 3}
@@ -6162,7 +6162,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _healthBar: {fileID: 224113977}
-  _playerHealth: {fileID: 181532162}
+  _player: {fileID: 181532162}
 --- !u!1 &1962572097
 GameObject:
   m_ObjectHideFlags: 0
@@ -6446,19 +6446,13 @@ MonoBehaviour:
   _activeEffectsApplied: []
   _passiveEffectsApplied: []
   _activeEffects:
-  - {fileID: 11400000, guid: 0b1be0c78370fd247a567e2a659979eb, type: 2}
-  - {fileID: 11400000, guid: 6fcab62345aed3f479eb559f39b65706, type: 2}
-  - {fileID: 11400000, guid: 9e91650b1a1a38441a4d061f69341712, type: 2}
-  - {fileID: 11400000, guid: 4a34155ad4ccc9e42a3d0f7fbd697215, type: 2}
-  - {fileID: 11400000, guid: 34463ac3c6175df4da546a83a73edcbb, type: 2}
-  - {fileID: 11400000, guid: 6df5f8767b3340b44a3f6730f7f581b3, type: 2}
-  _passiveEffects:
-  - {fileID: 11400000, guid: 50248afd2a4b8d946b013d6e1eae0690, type: 2}
-  - {fileID: 11400000, guid: 528c9e1f836f6df4a8eece6912cfb547, type: 2}
-  - {fileID: 11400000, guid: f41a24624f6ada44680187dbb1733e37, type: 2}
-  - {fileID: 11400000, guid: c089c68dfd11a4f4683862015d86dde0, type: 2}
-  - {fileID: 11400000, guid: 7891c4ad6be289e48af3c287b0d12578, type: 2}
+  - {fileID: 11400000, guid: dd6e25744c0643147954943eb78bc1de, type: 2}
+  - {fileID: 11400000, guid: 16996a21481348b4f93f6a741cdaf1a3, type: 2}
+  - {fileID: 11400000, guid: dd6e25744c0643147954943eb78bc1de, type: 2}
+  _passiveEffects: []
   _cardManager: {fileID: 1463945134}
+  _enemyManager: {fileID: 1295487554}
+  _player: {fileID: 181532162}
 --- !u!4 &2111685158
 Transform:
   m_ObjectHideFlags: 0
