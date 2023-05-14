@@ -3,9 +3,9 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public event Action<float, float> OnHealthChange;
     public static event Action OnDie;
     
+    [SerializeField] private HealthBar _healthBar;
     [SerializeField] private float _maxHealth;
 
     private float _currentHealth;
@@ -29,7 +29,7 @@ public class Player : MonoBehaviour
     private void SetHealth(float value)
     {
         _currentHealth = value;
-        OnHealthChange?.Invoke(_currentHealth, _maxHealth);
+        _healthBar.SetValueBar(_currentHealth, _maxHealth);
     }
 
     private void Die()

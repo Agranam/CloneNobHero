@@ -10,6 +10,7 @@ public class EnemyManager : MonoBehaviour
 {
     [SerializeField] private Transform _playerTransform;
     [SerializeField] private ChapterSettings _chapterSettings;
+    [SerializeField] private ExperienceManager _experienceManager;
     [SerializeField] private float _spawnRadius;
 
     private List<Enemy> _enemiesList = new();
@@ -38,7 +39,7 @@ public class EnemyManager : MonoBehaviour
         Vector2 randomPoint = Random.insideUnitCircle.normalized;
         Vector3 position = new Vector3(randomPoint.x, 0, randomPoint.y) * _spawnRadius + _playerTransform.position;
         Enemy newEnemy = Instantiate(enemy, position, Quaternion.identity);
-        newEnemy.Init(this, _playerTransform, _spawnRadius);
+        newEnemy.Init(this, _experienceManager, _playerTransform, _spawnRadius);
         _enemiesList.Add(newEnemy);
     }
 

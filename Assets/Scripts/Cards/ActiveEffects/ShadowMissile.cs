@@ -27,7 +27,7 @@ public class ShadowMissile : MonoBehaviour
     {
         if (other.TryGetComponent(out Enemy enemy))
         {
-            enemy.DoDamage(_damage);
+            enemy.TakeDamage(_damage);
             _passCount--;
             if (_passCount == 0)
             {

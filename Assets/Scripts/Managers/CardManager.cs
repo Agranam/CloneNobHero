@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -26,10 +27,16 @@ public class CardManager : MonoBehaviour
             _effectCards[i].Show(effects[i]);
         }
 
-        ShowCards();
-        //Invoke(nameof(ShowCards), delay);
+        StartCoroutine(ExecuteAfterTime(delay));
     }
 
+    IEnumerator ExecuteAfterTime(float timeInSeconds)
+    {
+        yield return new WaitForSecondsRealtime(timeInSeconds);
+
+        ShowCards();
+    }
+    
     private void ShowCards()
     {
         _cardManagerParent.SetActive(true);

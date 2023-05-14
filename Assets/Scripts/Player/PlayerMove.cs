@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-public class RigidbodyMove : MonoBehaviour
+public class PlayerMove : MonoBehaviour
 {
     [SerializeField] private Rigidbody _rigidbody;
     [SerializeField] private Joystick _joystick;
@@ -25,6 +25,12 @@ public class RigidbodyMove : MonoBehaviour
         }
     }
 
+    public void StopMove()
+    {
+        _animator.SetBool(_run, false);
+        _rigidbody.velocity = Vector3.zero;
+    }
+    
     private void FixedUpdate()
     {
         _rigidbody.velocity = new Vector3(_moveInput.x, 0f, _moveInput.y) * _speed;

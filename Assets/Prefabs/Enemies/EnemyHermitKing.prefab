@@ -19,6 +19,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2314663599661497629, guid: 90a1b8fcac90d1c4186b99cddad8cd07,
         type: 3}
+      propertyPath: _expSpawn
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2314663599661497629, guid: 90a1b8fcac90d1c4186b99cddad8cd07,
+        type: 3}
+      propertyPath: _fullHealth
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 2314663599661497629, guid: 90a1b8fcac90d1c4186b99cddad8cd07,
+        type: 3}
       propertyPath: _attackPeriod
       value: 1.5
       objectReference: {fileID: 0}
@@ -96,6 +106,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: EnemyHermitKing
+      objectReference: {fileID: 0}
+    - target: {fileID: 2903396655484540493, guid: 90a1b8fcac90d1c4186b99cddad8cd07,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2903396655484540493, guid: 90a1b8fcac90d1c4186b99cddad8cd07,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 2903396655484540493, guid: 90a1b8fcac90d1c4186b99cddad8cd07,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 2903396655484540493, guid: 90a1b8fcac90d1c4186b99cddad8cd07,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4583035323187868274, guid: 90a1b8fcac90d1c4186b99cddad8cd07,
         type: 3}

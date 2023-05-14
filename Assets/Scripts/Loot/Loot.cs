@@ -41,6 +41,31 @@ public class Loot : MonoBehaviour
         
         Take(playerCollector);
     }
+    
+    public void Fall(Vector3 target)
+    {
+        _collider.enabled = false;
+        StartCoroutine(FallToGround(target));
+    }
+
+    IEnumerator FallToGround(Vector3 target)
+    {
+        Vector3 a = transform.position;
+        Vector3 b = a + Vector3.up * 2.5f;
+        
+        
+        for (float t = 0; t < 1f; t+=Time.deltaTime * 3)
+        {
+            Vector3 d = target;
+            Vector3 c = d + Vector3.up * 2.5f;
+            Vector3 position = Bezier.GetPoint(a, b, c, d, t);
+            
+            transform.position = position;
+            yield return null;
+        }
+        
+        _collider.enabled = true;
+    }
 
     protected virtual void Take(PlayerCollector playerCollector)
     {

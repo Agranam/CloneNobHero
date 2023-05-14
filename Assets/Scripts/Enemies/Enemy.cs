@@ -5,17 +5,26 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] private Rigidbody _rigidbody;
     [SerializeField] private GameObject _dyingEffect;
-    [SerializeField] private float _health = 50;
+    [SerializeField] private HealthBar _healthBar;
+    [SerializeField] private float _fullHealth = 50;
     [SerializeField] private float _speed;
     [SerializeField] private float _rotationLerpRate = 3f;
     [SerializeField] private float _attackPeriod = 1f;
     [SerializeField] private float _dps = 10f;
+    [SerializeField] private float _expSpawn = 1f;
 
     private EnemyManager _enemyManager;
+    private ExperienceManager _experienceManager;
     private Player _player;
     private Transform _playerTransform;
     private float _attackTimer;
     private float _spawnRadius;
+    private float _currentHealth;
+
+    private void Start()
+    {
+        SetHealth(_fullHealth);
+    }
 
     private void Update()
     {
@@ -48,22 +57,31 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    public void Init(EnemyManager enemyManager, Transform playerTransform, float spawnRadius)
+    public void Init(EnemyManager enemyManager, ExperienceManager experienceManager,Transform playerTransform, float spawnRadius)
     {
         _enemyManager = enemyManager;
+        _experienceManager = experienceManager;
         _playerTransform = playerTransform;
         _spawnRadius = spawnRadius;
     }
 
-    public void DoDamage(float damage)
+    public void TakeDamage(float damage)
     {
-        _health -= damage;
-        if (_health <= 0)
+        float newHealth = _currentHealth - damage;
+        newHealth = Mathf.Max(newHealth, 0);
+        SetHealth(newHealth);
+        if (newHealth == 0)
         {
             Die();
         }
     }
     
+    private void SetHealth(float value)
+    {
+        _currentHealth = value;
+        _healthBar.SetValueBar(_currentHealth, _fullHealth);
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.TryGetComponent(out Player playerHealth))
@@ -82,6 +100,7 @@ public class Enemy : MonoBehaviour
 
     private void Die()
     {
+        _experienceManager.CreateExperience(transform.position, _expSpawn);
         _enemyManager.RemoveEnemy(this);
         Instantiate(_dyingEffect, transform.position, Quaternion.identity);
         Destroy(gameObject);

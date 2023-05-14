@@ -37,6 +37,6 @@ public class MagicMissile : MonoBehaviour
 
     private void AffectEnemy()
     {
-        _targetEnemy.DoDamage(_damage);
+        _targetEnemy.TakeDamage(_damage);
     }
 }

@@ -2,9 +2,9 @@
 
 public class ExperienceLoot : Loot
 {
-    [SerializeField] private int _experienceValue = 1;
+    [SerializeField] private float _experienceValue = 1;
 
-    public void SetExperienceValue(int value)
+    public void SetExperienceValue(float value)
     {
         _experienceValue = value;
     }

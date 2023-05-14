@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Rendering;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class ExperienceManager : MonoBehaviour
 {
@@ -12,8 +13,10 @@ public class ExperienceManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _levelText;
     [SerializeField] private Image _experienceBar;
     [SerializeField] private EffectsManager _effectsManager;
+    [SerializeField] private PlayerMove _playerMove;
+    [SerializeField] private ExperienceLoot _expPrefab;
     [SerializeField] private AnimationCurve _experienceCurve;
-
+    
     [SerializeField] private float _experience;
     [SerializeField] private float _nextLevelExperience;
     
@@ -29,7 +32,7 @@ public class ExperienceManager : MonoBehaviour
         _nextLevelExperience = (int)_experienceCurve.Evaluate(_level);
     }
 
-    public void AddExperience(int value)
+    public void AddExperience(float value)
     {
         _experience += value;
         DisplayExperience();
@@ -39,6 +42,16 @@ public class ExperienceManager : MonoBehaviour
         }
     }
 
+    public void CreateExperience(Vector3 position, float expValue)
+    {
+        float radius = (float)Random.Range(1, 2f);
+        Vector2 randomPos = Random.insideUnitCircle * radius;
+        Vector3 spawnPos = position + new Vector3(randomPos.x, 0f, randomPos.y);
+        var exp = Instantiate(_expPrefab, position, Quaternion.identity);
+        exp.SetExperienceValue(expValue);
+        exp.Fall(spawnPos);
+    }
+    
     public void UpLevel()
     {
         _level++;
@@ -47,6 +60,7 @@ public class ExperienceManager : MonoBehaviour
         _effectsManager.ShowCards();
         GetNextLevelExperience();
         DisplayExperience();
+        _playerMove.StopMove();
         LevelUp.Invoke();
     }
 

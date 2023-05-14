@@ -617,6 +617,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a32dcc54fbf44d5094526addd3054075, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _healthBar: {fileID: 1922360775}
   _maxHealth: 100
 --- !u!1 &224113975
 GameObject:
@@ -3828,6 +3829,9 @@ MonoBehaviour:
   _levelText: {fileID: 798830263}
   _experienceBar: {fileID: 513615150}
   _effectsManager: {fileID: 2111685157}
+  _playerMove: {fileID: 181532160}
+  _expPrefab: {fileID: 4022249754982715080, guid: d3e28f958653f6c449e07a814390faff,
+    type: 3}
   _experienceCurve:
     serializedVersion: 2
     m_Curve:
@@ -4006,7 +4010,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _joystick: {fileID: 707592123}
-  _rigidbodyMove: {fileID: 181532160}
+  _playerMove: {fileID: 181532160}
   _enemyManager: {fileID: 1295487554}
   _experienceManager: {fileID: 1145969501}
 --- !u!4 &1273562226
@@ -4070,6 +4074,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerTransform: {fileID: 181532158}
   _chapterSettings: {fileID: 11400000, guid: edeceeade3dd58648b1ef6e284a6eeb4, type: 2}
+  _experienceManager: {fileID: 1145969501}
   _spawnRadius: 13
 --- !u!1001 &1331277623
 PrefabInstance:
@@ -5445,10 +5450,35 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1188192175323852558, guid: 0f04ca49ae490b743971cf31729b3364,
+        type: 3}
+      propertyPath: useUnscaledTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1312349139430265201, guid: 0f04ca49ae490b743971cf31729b3364,
+        type: 3}
+      propertyPath: useUnscaledTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4583760847735467811, guid: 0f04ca49ae490b743971cf31729b3364,
+        type: 3}
+      propertyPath: useUnscaledTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5578214021093854111, guid: 0f04ca49ae490b743971cf31729b3364,
+        type: 3}
+      propertyPath: useUnscaledTime
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5962915625593066007, guid: 0f04ca49ae490b743971cf31729b3364,
         type: 3}
       propertyPath: m_Name
       value: LevelUpEffect
+      objectReference: {fileID: 0}
+    - target: {fileID: 6781722526354083599, guid: 0f04ca49ae490b743971cf31729b3364,
+        type: 3}
+      propertyPath: useUnscaledTime
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0f04ca49ae490b743971cf31729b3364, type: 3}
@@ -6161,8 +6191,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af122b31257e4e99935f74a0073a3e5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _lookToCamera: 0
   _healthBar: {fileID: 224113977}
-  _player: {fileID: 181532162}
 --- !u!1 &1962572097
 GameObject:
   m_ObjectHideFlags: 0
@@ -6442,7 +6472,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae22696812604b21b5eea609cf8e1fbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _delayShowCards: 2
+  _delayShowCards: 1
   _activeEffectsApplied: []
   _passiveEffectsApplied: []
   _activeEffects:

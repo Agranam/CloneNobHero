@@ -3,7 +3,7 @@
 public class ActionState : GameState
 {
     [SerializeField] private Joystick _joystick;
-    [SerializeField] private RigidbodyMove _rigidbodyMove;
+    [SerializeField] private PlayerMove _playerMove;
     [SerializeField] private EnemyManager _enemyManager;
     [SerializeField] private ExperienceManager _experienceManager;
 
@@ -18,14 +18,14 @@ public class ActionState : GameState
     {
         base.Enter();
         _joystick.Activate();
-        _rigidbodyMove.enabled = true;
+        _playerMove.enabled = true;
     }
 
     public override void Exit()
     {
         base.Exit();
         _joystick.Deactivate();
-        _rigidbodyMove.enabled = false;
+        _playerMove.enabled = false;
 
     }
 }

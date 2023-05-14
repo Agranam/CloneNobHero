@@ -39,7 +39,7 @@ public class PlayerCollector : MonoBehaviour
         }
     }
 
-    public void TakeExperience(int value)
+    public void TakeExperience(float value)
     {
         _experienceManager.AddExperience(value);
     }

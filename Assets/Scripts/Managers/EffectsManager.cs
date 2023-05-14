@@ -5,7 +5,7 @@ using Random = UnityEngine.Random;
 
 public class EffectsManager : MonoBehaviour
 {
-    [SerializeField] private float _delayShowCards = 2f;
+    [SerializeField] private float _delayShowCards = 1f;
     [SerializeField] private List<ActiveEffect> _activeEffectsApplied = new();
     [SerializeField] private List<PassiveEffect> _passiveEffectsApplied = new();
     
@@ -59,7 +59,6 @@ public class EffectsManager : MonoBehaviour
         effect.Activate();
     }
     
-    [ContextMenu("ShowCards")]
     public void ShowCards()
     {
         List<Effect> effectsToShow = new();
