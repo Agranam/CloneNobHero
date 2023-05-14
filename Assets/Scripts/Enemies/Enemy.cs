@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System.Collections;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
@@ -73,6 +73,58 @@ public class Enemy : MonoBehaviour
         if (newHealth == 0)
         {
             Die();
+        }
+    }
+
+    public void Jump(float jumpDuration, float jumpHeight)
+    {
+        StartCoroutine(JumpRoutine(jumpDuration, jumpHeight));
+    }
+    
+    private IEnumerator JumpRoutine(float jumpDuration, float jumpHeight)
+    {
+        float timer = 0;
+        Vector3 startPosition = transform.position;
+        Vector3 endPosition = startPosition + Vector3.up * jumpHeight;
+
+        while (timer <= jumpDuration)
+        {
+            float t = timer / jumpDuration; // Нормализованное время
+            transform.position = Vector3.Lerp(startPosition, endPosition, t);
+            timer += Time.deltaTime;
+            yield return null;
+        }
+
+        timer = 0;
+        while (timer <= jumpDuration * 0.5f)
+        {
+            float t = timer / jumpDuration * 2f; // Нормализованное время
+            transform.position = Vector3.Lerp(endPosition, startPosition, t);
+            timer += Time.deltaTime;
+            yield return null;
+        }
+    }
+    private IEnumerator FallRoutine(float jumpDuration, float jumpHeight)
+    {
+        float timer = 0;
+        Vector3 startPosition = transform.position;
+        Vector3 endPosition = startPosition + Vector3.up * jumpHeight;
+
+        while (timer <= jumpDuration)
+        {
+            float t = timer / jumpDuration; // Нормализованное время
+            transform.position = Vector3.Lerp(startPosition, endPosition, t);
+            timer += Time.deltaTime;
+            yield return null;
+        }
+
+        timer = 0;
+        while (timer <= jumpDuration)
+        {
+            float t = timer / jumpDuration; // Нормализованное время
+            transform.position = Vector3.Lerp(endPosition, startPosition, t);
+            timer += Time.deltaTime;
+            yield return null;
         }
     }
     

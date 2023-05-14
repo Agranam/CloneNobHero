@@ -87,6 +87,7 @@ MonoBehaviour:
   _rotationLerpRate: 3
   _attackPeriod: 1
   _dps: 10
+  _expSpawn: 1
 --- !u!1 &2536853499387648383
 GameObject:
   m_ObjectHideFlags: 0

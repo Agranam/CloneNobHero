@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff599a92a8a240d9b1bcefd9226cb217, type: 3}
+  m_Name: VortexOfAttractionEffect
+  m_EditorClassIdentifier: 
+  _name: Vortex Of Attraction
+  _description: Vortex Of Attraction
+  _sprite: {fileID: 21300000, guid: b68f67f9cd1a0694b8a307bf716e211a, type: 3}
+  _level: -1
+  _cooldown: 5
+  _vortexOfAttraction: {fileID: 9182539290134112371, guid: a8d55328010bca54b94f30a6c73c9470,
+    type: 3}
+  _pullRadius: 2
+  _pullForce: 150
+  _throwForce: 200
+  _damage: 25
+  _timeToAction: 2

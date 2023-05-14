@@ -49,9 +49,11 @@ public class PlayerCollector : MonoBehaviour
         _levelUpParticles.Play();
     }
     
+#if UNITY_EDITOR
     private void OnDrawGizmos()
     {
         Handles.color = Color.yellow;
         Handles.DrawWireDisc(transform.position, Vector3.up, _distanceToCollect);
     }
+#endif
 }
