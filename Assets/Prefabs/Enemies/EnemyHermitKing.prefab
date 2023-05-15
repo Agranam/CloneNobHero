@@ -19,6 +19,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2314663599661497629, guid: 90a1b8fcac90d1c4186b99cddad8cd07,
         type: 3}
+      propertyPath: _animator
+      value: 
+      objectReference: {fileID: 4216493181805330596}
+    - target: {fileID: 2314663599661497629, guid: 90a1b8fcac90d1c4186b99cddad8cd07,
+        type: 3}
       propertyPath: _expSpawn
       value: 2
       objectReference: {fileID: 0}
@@ -42,6 +47,11 @@ PrefabInstance:
       propertyPath: _rotationLerpRate
       value: 1.5
       objectReference: {fileID: 0}
+    - target: {fileID: 2314663599661497629, guid: 90a1b8fcac90d1c4186b99cddad8cd07,
+        type: 3}
+      propertyPath: _skinnedMeshRenderer
+      value: 
+      objectReference: {fileID: 4216493181801135716}
     - target: {fileID: 2314663599661497631, guid: 90a1b8fcac90d1c4186b99cddad8cd07,
         type: 3}
       propertyPath: m_Radius
@@ -214,3 +224,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dbcc8d6ff0d6aa1439146455fea9d413, type: 3}
+--- !u!137 &4216493181801135716 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 7817129395024931844, guid: dbcc8d6ff0d6aa1439146455fea9d413,
+    type: 3}
+  m_PrefabInstance: {fileID: 6269006222765412960}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &4216493181805330596 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 7817129395029037764, guid: dbcc8d6ff0d6aa1439146455fea9d413,
+    type: 3}
+  m_PrefabInstance: {fileID: 6269006222765412960}
+  m_PrefabAsset: {fileID: 0}

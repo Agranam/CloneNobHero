@@ -82,6 +82,8 @@ MonoBehaviour:
   _dyingEffect: {fileID: 8891085540853434729, guid: a76161fe5e4d2c447965f3a0c359e851,
     type: 3}
   _healthBar: {fileID: 4891406981878432540}
+  _skinnedMeshRenderer: {fileID: 0}
+  _frozenColor: {r: 0.19667137, g: 0.2849467, b: 0.8207547, a: 1}
   _fullHealth: 50
   _speed: 3
   _rotationLerpRate: 3

@@ -4,7 +4,7 @@
     menuName = "CloneNobHero/Effects/ActiveEffect/" + nameof(ShadowMissilesEffect), order = 0)]
 public class ShadowMissilesEffect : ActiveEffect
 {
-    [Space(5),Header("ShadowMissilesEffect")]
+    [Space(5),Header("Shadow Missiles")]
     [SerializeField] private ShadowMissile _shadowMissile;
     [SerializeField] private float _bulletSpeed = 6f;
     [SerializeField] private float _damage = 30;
