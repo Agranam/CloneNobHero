@@ -63,7 +63,8 @@ public class VortexOfAttraction : MonoBehaviour
         
         foreach (var enemy in enemiesForDamage)
         {
-            enemy.TakeDamage(_damage);
+            if(enemy != null)
+                enemy.TakeDamage(_damage);
         }
         
         Destroy(gameObject, 0.2f);
@@ -83,11 +84,8 @@ public class VortexOfAttraction : MonoBehaviour
 
             Rigidbody rb = collider.GetComponent<Rigidbody>();
 
-            //Vector3 forceDirection = transform.position - collider.transform.position;
-
             Vector3 directionToCenter = (transform.position - collider.transform.position).normalized;
             rb.AddForce(directionToCenter * _pullForce);
-            //rb.AddForce(forceDirection.normalized * _pullForce * Time.fixedDeltaTime);
         }
     }
     

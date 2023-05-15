@@ -13,6 +13,7 @@ public class ExperienceManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _levelText;
     [SerializeField] private Image _experienceBar;
     [SerializeField] private EffectsManager _effectsManager;
+    [SerializeField] private EnemyManager _enemyManager;
     [SerializeField] private PlayerMove _playerMove;
     [SerializeField] private ExperienceLoot _expPrefab;
     [SerializeField] private AnimationCurve _experienceCurve;
@@ -57,6 +58,7 @@ public class ExperienceManager : MonoBehaviour
         _level++;
         _levelText.text = _level.ToString("00");
         _experience = 0;
+        _enemyManager.StartNewWave(_level);
         _effectsManager.ShowCards();
         GetNextLevelExperience();
         DisplayExperience();

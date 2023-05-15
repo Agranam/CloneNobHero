@@ -24,8 +24,6 @@ public class FrozenCircle : MonoBehaviour
         if (other.TryGetComponent(out Enemy enemy))
         {
             if(enemy.IsFrozen) return;
-            
-            Debug.Log("Freeze");
             _frozenEnemies.Add(enemy);
             enemy.Frozen();
         }

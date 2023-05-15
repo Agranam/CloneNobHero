@@ -30,8 +30,11 @@ public class FrozenCircleEffect : ActiveEffect
         
         foreach (var enemy in _frozenCircle.FrozenEnemies)
         {
-            enemy.TakeDamage(_damage);
-            enemy.UnFrozen();
+            if(enemy != null)
+            {
+                enemy.TakeDamage(_damage);
+                enemy.UnFrozen();
+            }
         }
         
         _frozenCircle.DestroyObj();
